@@ -255,8 +255,9 @@ header {
 
 /* Hero Section */
 .hero {
-    backgroung-size: cover;
-    backgroung-position:center;
+    background-size: cover;
+    backgroungd-position:center;
+    background-repeat: no-repeat;
     width:100%;
     height: 100vh;
     display: flex;
