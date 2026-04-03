@@ -16,6 +16,8 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html, body{ overflow-x: hidden;
+
 body {
     margin: 0;
     padding: 0;
@@ -265,6 +267,10 @@ header {
     justify-content: center;
     text-align: center;
     padding-top: 80px;
+    .hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('hero image.jpg') center/cover no-repeat;
+}
 }
 
 .hero-content h1 {
