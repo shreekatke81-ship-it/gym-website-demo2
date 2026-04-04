@@ -634,6 +634,11 @@ th {
     outline: none;
 }
 
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 /* Footer */
 footer {
     background: #0d0d0d;
