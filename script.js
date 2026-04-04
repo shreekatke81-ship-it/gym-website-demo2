@@ -90,23 +90,36 @@ window.addEventListener('scroll', () => {
 
 // Form Submission (Prevent Default)
 const contactForm = document.getElementById("contact-form");
+const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-contactForm.addEventListener("submit", function(e){
-e.preventDefault();
+let isSubmitting = false;
 
-emailjs.sendForm("service_7n70y0k","template_cbqqzjz",this)
-.then(function(){
+contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-document.querySelector(".contact-form").innerHTML =
-"<h3 style='color:#4CAF50'>Message sent successfully!</h3>";
+    if (isSubmitting) return;
 
-}, function(error){
+    isSubmitting = true;
+    submitBtn.disabled = true;
 
-alert("Failed to send message");
+    const originalBtnText = submitBtn.innerText;
+    submitBtn.innerText = "Sending...";
 
+    try {
+        await emailjs.sendForm("service_7n70y0k", "template_cbqqzjz", this);
+
+        document.querySelector(".contact-form").innerHTML =
+            "<h3 style='color:#4CAF50'>Message sent successfully!</h3>";
+
+    } catch (error) {
+        alert("Failed to send message");
+
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.innerText = originalBtnText;
+    }
 });
 
-});
 // Add scroll event to close mobile menu
 window.addEventListener('scroll', () => {
     if (navLinks && navLinks.classList.contains('active')) {
@@ -116,7 +129,6 @@ window.addEventListener('scroll', () => {
         }
     }
 });
-
 
 
 
