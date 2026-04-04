@@ -109,7 +109,7 @@ contactForm.addEventListener("submit", async function (e) {
         await emailjs.sendForm("service_7n70y0k", "template_cbqqzjz", this);
 
         document.querySelector(".contact-form").innerHTML =
-            "<h3 style='color:#4CAF50'>Message sent successfully!</h3>";
+            "<h3 style='color:#FF0000'>Message sent successfully!</h3>";
 
     } catch (error) {
         alert("Failed to send message");
